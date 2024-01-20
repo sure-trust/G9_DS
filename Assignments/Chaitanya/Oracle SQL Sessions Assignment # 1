@@ -1,0 +1,107 @@
+1. 	select COUNT(*) as total_employees from emp;
+
+2. 	select COUNT(*) as Number_of_departmennts from dept;
+
+3. 	select * from emp;
+   	select count(*) as Ename from emp;
+
+4.	select * from dept;
+
+5. 	select SUM(sal) as total_salary_paid from emp;
+
+6. 	select SUM(comm) as total_commision from emp;
+
+7. 	select DISTINCT JOB from emp where COMM is NOT NULL;
+
+8. 	Select SYSDATE as current_system_date from DUAL;
+
+9.	select AVG(sal) avg_salary_paid_to_employee from emp;
+
+10. 	select deptno, COUNT(empno) from emp
+	    group by deptno
+	    order by deptno;
+
+11.  	select deptno , sum(sal) from emp
+	    group by deptno
+	    order by deptno; 	
+
+12.	  select job , count(empno) from emp
+	    group by job
+	    order by job;	
+
+13.	  select job , round(avg(sal),3) from emp
+	    group by job
+	    order by job;
+
+14.	  select empno, ename,
+	    to_char(hiredate, 'DD') as hire_day,
+	    to_char (hiredate, 'MM') as hire_month,
+	    to_char (hiredate, 'YYYY') as hire_year
+	    from emp;
+
+15.	  select deptno, empno, ename
+	    from emp
+	    order by deptno, empno;
+
+16.	  select empno, ename , job
+	    from emp
+	    order by job , empno;
+ 
+17.	  select empno,ename,sal
+	    from emp
+	    order by sal desc;
+
+18.	  select empno,ename,deptno,sal
+	    from emp
+	    order by deptno asc, sal desc, empno;
+
+19.	  select count(ename)
+	    from emp
+	    where Length(ename) = 6;
+
+20.	  select max(sal) ,min(sal) 
+	    from emp;
+
+21. 	select deptno , max(sal), min (sal) , round(avg(sal)) , sum(sal)
+	    from emp
+	    group by deptno
+	    order by deptno;
+
+22.	  select empno,ename,hiredate
+	    from emp
+	    order by hiredate;
+
+23.	  select empno,ename,hiredate
+	    from emp
+	    order by hiredate desc
+	    Fetch first 1 row only;
+
+24.	  select empno,ename,hiredate
+	    from emp
+	    order by hiredate 
+	    fetch first 1 row only;
+
+25.	  select to_char(hiredate ,'YYYY')as hireyear,deptno
+	    from emp
+	    order by hiredate desc, deptno asc;
+
+26.	  select empno,ename,sal
+	    from emp
+	    where sal >= (select (avg(sal))from emp);
+
+27.	  select empno,ename,sal
+	    from emp
+	    where sal <= (select (avg(sal))from emp);
+
+28.	  select empno , ename , sal
+	    from emp 
+	    where sal between 2000 and 4000;
+
+29.	  select empno , ename , sal
+	    from emp
+	    where sal= (select max(sal) from emp)
+	    or sal = (select min (sal) from emp);
+
+30.   select count (*) as no_of_gifts
+	    from emp
+	    where to_char(hiredate ,'MM') = to_char(Add_MONTHS(sysdate,1),'MM');
