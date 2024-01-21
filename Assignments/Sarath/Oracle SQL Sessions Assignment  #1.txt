@@ -1,0 +1,36 @@
+
+ORACLE SQL SESSION ASSIGNMENT #1
+
+1.SELECT COUNT(*) AS total_employees FROM emp;
+2.SELECT COUNT(*) AS total_departments FROM dept;
+3.SELECT * FROM emp;
+4.SELECT * FROM dept;
+5.SELECT SUM(sal) AS total_salary_paid FROM emp;
+6.SELECT SUM(comm) AS total_commission_paid FROM emp;
+7.SELECT DISTINCT job FROM emp WHERE comm IS NOT NULL;
+8.SELECT sysdate FROM emp;
+9.SELECT AVG(sal) AS average_salary FROM emp;
+10.SELECT deptno, COUNT(empno) AS employee_count FROM emp GROUP BY deptno ORDER BY deptno;
+11.SELECT deptno, SUM(sal) AS total_salary FROM emp GROUP BY deptno ORDER BY deptno;
+12.SELECT job, COUNT(*) AS employee_count FROM emp GROUP BY job ORDER BY employee_count DESC;
+13.SELECT job, AVG(sal) AS avg_salary FROM emp GROUP BY job;
+14.SELECT ename as Employee_Name,TO_CHAR(hiredate, 'DD') as Hire_Day, TO_CHAR(hiredate, 'MM') as Hire_Month, TO_CHAR(hiredate, 'YYYY') as Hire_Year
+FROM emp;
+15.SELECT *FROM emp ORDER BY deptno;
+16.SELECT *FROM emp ORDER BY job;
+17.SELECT ename, sal FROM emp ORDER BY sal DESC;
+18.SELECT ename, sal,deptno FROM emp ORDER BY sal DESC,deptno asc ;
+19.SELECT COUNT(*) AS num_employees_with_six_characters FROM emp WHERE LENGTH(ename) = 6;
+20.SELECT MAX(sal) AS max_salary,MIN(sal) AS min_salary FROM emp;
+21.SELECT deptno,MAX(sal) AS max_salary,MIN(sal) AS min_salary,AVG(sal) AS avg_salary,SUM(sal) AS total_salaryFROM emp GROUP BY deptno ORDER BY deptno;
+22.select empno,ename,job,sal,hiredate from emp order by hiredate;
+23.SELECT * FROM emp ORDER BY hiredate DESC FETCH FIRST 1 ROW ONLY;
+24.SELECT * FROM emp ORDER BY hiredate ASC FETCH FIRST 1 ROW ONLY;
+25.SELECT *FROM emp ORDER BY EXTRACT(YEAR FROM hiredate) DESC, deptno ASC;
+26.SELECT *FROM emp WHERE sal >= (SELECT AVG(sal) FROM emp) order by sal asc;
+27.SELECT *FROM emp WHERE sal <= (SELECT AVG(sal) FROM emp) order by sal desc;
+28.SELECT *FROM emp WHERE sal >= 2000 AND sal <= 4000;
+29.SELECT *FROM emp WHERE sal = (SELECT MAX(sal) FROM emp); SELECT *FROM emp WHERE sal = (SELECT MIN(sal) FROM emp);
+30.select count(*) from emp where EXTRACT(month from hiredate)=EXTRACT(month from add_months(sysdate,1));
+
+
