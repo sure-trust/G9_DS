@@ -1,0 +1,112 @@
+1.select count(*) AS total_employees
+  from emp;
+
+2.select count(distinct deptno) AS total_departments
+  from emp;
+
+3.select ename 
+  from emp;
+
+4.select deptno
+  from emp;
+
+5.select sum(sal) AS total_salary
+  from emp;
+
+6.select sum(comm) AS total_commission
+  from emp;
+
+7.select distinct job
+  from emp
+  where comm is not null;
+
+8.select sysdate as system_date
+  from dual;
+
+9.select avg(sal) AS average_salary
+  from emp;
+
+10.select deptno, count(*) AS employee_count
+  from emp
+  GROUP BY deptno;
+
+11.select deptno, sum(sal) AS total_salary
+   from emp
+   group by deptno
+   order by 1
+
+12.select JOB, COUNT(*) AS employee_count
+   from emp
+   group by job;
+
+13.select JOB,AVG(SAL) AS AVERAGE_SALARY
+   from emp 
+   group by job;
+
+14.select empno,ename,
+  to_char(hiredate, 'DD') as hire_date,
+  to_char(hiredate, 'MM') as hire_month,
+  to_char(hiredate, 'YYYY') as hire_year
+  from emp;
+
+15.select * from emp
+   order by deptno
+
+16.select *from emp
+   order by job
+
+
+17.select*from emp
+   order by sal desc
+
+18.select*from emp
+   order by deptno,sal desc
+
+19.select count(*) AS num_employees_with_six_chars
+   from emp
+   where length(ename) = 6;
+
+20.select max(sal) as max_salary
+   from emp;
+   select min(sal) as min_salary
+   from emp;
+
+21.select deptno, max(sal) as max_salary, min(sal) as min_salary,avg(sal) as avg_salary, sum(sal)as total_salary
+   from emp
+   group by deptno 
+   order by deptno asc
+ 
+22.select *from emp
+   order by hiredate
+
+23.select *from emp
+   order by hiredate desc
+   fetch first 1 row only;
+
+24.select *from emp
+   order by hiredate asc
+   fetch first 1 row only;
+
+25.select *from emp
+   order by hiredate desc, deptno asc
+
+26.select *from emp
+   where sal >= (select avg(sal) from emp);
+
+27.select *from emp
+   where sal <= (select avg(sal) from emp);
+
+28.select *from emp
+   where sal between 2000 and 4000
+
+29.select*from emp
+   order by sal desc 
+   fetch first 1 row only
+ 
+   select*from emp
+   order by sal 
+   fetch first 1 row only
+
+30.select count(*) AS number_of_gifts
+   from emp
+   where to_char(hiredate, 'MM-YYYY') = to_char(add_months(sysdate, 1), 'MM-YYYY');
