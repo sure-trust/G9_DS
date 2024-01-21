@@ -2,19 +2,19 @@
 FROM EMP;
 2) SELECT COUNT(*) AS TotalDepartments
 FROM DEPT;
-3) SELECT * FROM employees;
-4) SELECT * FROM departments;
+3) SELECT * FROM emp;
+4) SELECT * FROM dept;
 5)SELECT SUM(SAL) As TotalSalary
-FROM employee;
+FROM emp;
 6) SELECT SUM(COMM) AS TotalCommission
 FROM EMP;
 7)SELECT DISTINCT JOB
 FROM EMP
 WHERE COMM IS NOT NULL;
-8)SELECT CURRENT_DATE AS SystemDate from EMP;
+8)SELECT SystemDate from EMP;
 9) SELECT AVG(SAL) AS AverageSalary
 FROM EMP;
-10) SELECT DNAME, COUNT(*) AS EmployeeCount
+10) SELECT ENAME, COUNT(*) AS EmployeeCount
 FROM EMP 
 GROUP BY DNAME;
 11)SELECT DNAME, SUM(SAL) AS TOTAL_SALARY
@@ -42,33 +42,32 @@ FROM EMP
 WHERE LENGTH(ENAME) = 6;
 20)SELECT MAX(SAL) AS MAX_SALARY, MIN(SAL) AS MIN_SALARY
 FROM EMP;
-21)SELECT MAX(SAL) AS MAX_SALARY, MIN(SAL) AS MIN_SALARY
+21)SELECT MAX(SAL) AS MAX_SALARY, MIN(SAL) AS MIN_SALARY,SUM(SAL)
+AS AVG(SAL),SUM(SAL) AS TOTAL(SAL)
 FROM EMP;
 22)SELECT *FROM EMP
 ORDER BY HIREDATE;
 23)SELECT *
-FROM Employee
+FROM Emp
 WHERE JoinDate = (
     SELECT MAX(JoinDate)
     FROM EMP
 )
-24)SELECT employee_name
-FROM employees
+24)SELECT emp_name
+FROM emp
 WHERE hire_date = (SELECT MIN(hire_date) FROM EMP);
-25)SELECT *FROM employee
-ORDER BY hire_year DESC, DEPT ASC;
+25)SELECT *FROM emp
+ORDER BY hire_year DESC, DEPTNO ASC;
 26)SELECT * 
-FROM Employees 
-WHERE Salary >= (SELECT AVG(Salary) FROM EMP)
-27)SELECT *FROM Employees
-WHERE Salary <= (SELECT AVG(Salary) FROM Employees)
-28)SELECT * FROM Employees WHERE Salary BETWEEN 2000 AND 4000;
-29)--- Query to find employees with the highest salary
-SELECT *FROM employees
-WHERE salary = (SELECT MAX(salary) FROM EMP);
---- Query to find employees with the lowest salary
-SELECT *FROM employees
-WHERE salary = (SELECT MIN(salary) FROM EMP);
+FROM emp
+WHERE Salary >= (SELECT AVG(Salary) FROM emp) 
+27)SELECT *FROM emp
+WHERE Salary <= (SELECT AVG(Salary) FROM emp)
+28)SELECT * FROM emp WHERE Salary>=2000 AND Salary<= 4000;
+29)SELECT *FROM emp
+WHERE salary = (SELECT MAX(salary) FROM emp);
+SELECT *FROM emp
+WHERE salary = (SELECT MIN(salary) FROM emp);
 30)SELECT COUNT(*) AS TotalGifts
 FROM EMP
 WHERE MONTH(joining_date) = MONTH(DATE_ADD(CURRENT_DATE(), INTERVAL 1 MONTH));
