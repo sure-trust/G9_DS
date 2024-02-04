@@ -1,0 +1,88 @@
+#1.Top 3 customers based on the amount spent
+QUERY:select * from(
+    select dc.cust_first_name,dc.cust_last_name,row_number()over(order by doi.unit_price desc)as row_num from demo_customers dc
+    inner join demo_orders dos on dc.customer_id=dos.customer_id
+    inner join demo_products dp on dos.order_id=dp.product_id
+    inner join demo_order_items doi on dp.product_id= doi.product_id
+)where row_num <=3;
+
+#2.Top 3 customers based on the number of orders
+QUERY:select * from(
+    select dc.cust_first_name,dc.cust_last_name,row_number()over( order by dos.order_total desc)as row_num from demo_customers dc
+    inner join demo_orders dos on dc.customer_id=dos.customer_id)where row_num <=3;
+
+#3.top 3 customers based on quantity sold.
+QUERY:
+select * from(
+    select dc.cust_first_name,dc.cust_last_name,row_number()over( order by doi.quantity desc)as row_num from demo_customers dc
+    inner join demo_orders dos on dc.customer_id=dos.customer_id
+    inner join demo_products dp on dos.order_id=dp.product_id
+    inner join demo_order_items doi on dp.product_id= doi.product_id
+)where row_num <=3;
+
+#4.Write a query to capture the customers last name,product names(he brought)and total quaninty of each of them.
+QUERY: select dc.cust_last_name,dp.product_name,sum(quantity) as totalquantity
+from demo_customers dc
+inner join demo_orders dom on dc.customer_id=dom.customer_id
+inner join demo_products dp on dom.order_id=dp.product_id
+inner join demo_order_items doi on dp.product_id=doi.product_id
+group by 
+grouping sets(
+    (dc.cust_last_name,dp.product_name),
+    (dc.cust_last_name),
+    (dp.product_name),
+    ()
+);
+
+#5.Transform the rows to columns for the result you get from query #4 above 
+QUERY: 
+select * from(
+select dc.cust_last_name,dp.product_name,doi.quantity as totalquantity
+from demo_customers dc
+inner join demo_orders dom on dc.customer_id=dom.customer_id
+inner join demo_products dp on dom.order_id=dp.product_id
+inner join demo_order_items doi on dp.product_id=doi.product_id
+    ) 
+pivot(
+     sum(totalquantity) for cust_last_name in(
+    'Bradley' as bradley,
+    'Dulles'  as dulles,
+    'Hartsfield' as hartsfield,
+    'LaGuardia' as laguardia,
+    'Lambert' as lambert,
+    'Logan' as logan,
+    'OHare' as ohare
+    )    
+) 
+order by 1;
+
+#6. Which year had most orders?
+QUERY:select to_char(order_timestamp,'YYYY') AS order_year,
+count(*)over(partition by to_char(order_timestamp,'YYYY') order by to_char(order_timestamp,'YYYY') desc  ) as order_count
+from demo_orders;
+
+#8.Which product category was most sold?
+QUERY:select product_name,count(distinct category)over(partition by product_id  ) as category_count
+from demo_products
+order by category_count desc;
+
+#9.Which product category took the second postion in term of qunantity sold?
+QUERY:select distinct category
+from(
+    select dop.category,row_number()over(order by sum(quantity) desc) as raank
+    from demo_products dop
+    join demo_order_items doi on dop.product_id =doi.product_id
+    group by dop.category   
+)
+where raank=2;
+
+#10.Write a query to help rollup total quantity on customer and product (name).
+QUERY:
+select dc.cust_last_name,dc.cust_first_name,dp.product_name,sum(quantity) as totalquantity
+from demo_customers dc
+inner join demo_orders dom on dc.customer_id=dom.customer_id
+inner join demo_products dp on dom.order_id=dp.product_id
+inner join demo_order_items doi on dp.product_id=doi.product_id
+group by rollup(dc.cust_last_name,dc.cust_first_name,dp.product_name)
+order by 1,2;
+
