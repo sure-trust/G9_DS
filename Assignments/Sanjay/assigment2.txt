@@ -1,0 +1,52 @@
+SELECT COUNTRYNAME, CONTINENT
+FROM countries 
+ORDER BY CONTINENT;
+-------------------------------------------------------------------------------------------------
+SELECT CONTINENT, COUNT(COUNTRYNAME) AS num_countries
+FROM countries
+GROUP BY CONTINENT;
+-------------------------------------------------------------------------------------------------
+SELECT COUNTRYNAME
+FROM countries
+WHERE NOT EXISTS (
+    SELECT 0
+    FROM car_makers
+    WHERE COUNTRYID = COUNTRYID );
+------------------------------------------------------------------------------------------------
+SELECT MAKER
+FROM car_makers
+JOIN countries  ON COUNTRYID = COUNTRYID
+WHERE COUNTRYNAME = 'japan';
+---------------------------------------------------------------------------------------------------
+SELECT MAKER
+FROM car_makers 
+JOIN countries  ON COUNTRYID = COUNTRYID
+WHERE COUNTRYNAME IN ('france', 'usa');
+------------------------------------------------------------------------------------------------
+SELECT COUNTRYNAME , CONTINENT
+FROM car_makers 
+JOIN countries  ON COUNTRYID = COUNTRYID
+WHERE MAKER = 'volvo';
+------------------------------------------------------------------------------------------------------
+SELECT MODEL
+FROM Model_Details
+JOIN car_makers  ON ID = ID
+WHERE FULLNAME = 'Ford Motor Company';
+----------------------------------------------------------------------------------------------
+SELECT COUNT(*)
+FROM Model_Details
+JOIN car_makers  ON ID = ID
+JOIN countries  ON COUNTRYID = COUNTRYID
+WHERE COUNTRYNAME = 'germany';
+----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+select * from countries;
+select * from Car_makers;
+select * from Model_Details ;
+select * from Car_Names;
+select * from Car_Details;

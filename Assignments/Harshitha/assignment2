@@ -1,0 +1,260 @@
+# 1.countries and their continents .order the results by continent names
+select cont.continent,cty.countryname
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+order by cont.continent;
+
+
+#2.number of countries within each continent
+select cont.continent, count(cty.countryname) as num_countries
+from continents cont
+inner join countries cty on cont.contid = cty.continent
+group by cont.continent;
+
+
+#3.countries with no car makers
+select cont.continent,cty.countryname,cm.maker,cm.fullname
+from continents cont
+inner join countries cty on cont.contid = cty.continent
+left join car_makers cm on cty.countryid=cm.country
+where cm.country is null;
+
+
+#4.list of car makers from japan
+select cont.continent,cty.countryname,cm.maker,cm.fullname
+from continents cont
+inner join countries cty on cont.contid = cty.continent
+left join car_makers cm on cty.countryid=cm.country
+where cty.countryname='japan';
+
+
+#5.list of car makers from france and usa
+select cont.continent,cty.countryname,cm.maker,cm.fullname
+from continents cont
+inner join countries cty on cont.contid = cty.continent
+left join car_makers cm on cty.countryid=cm.country
+where cty.countryname in ('france','usa');
+
+
+#6.country and continent of volvo car maker
+select cont.continent,cty.countryname,cm.maker,cm.fullname
+from continents cont
+inner join countries cty on cont.contid = cty.continent
+left join car_makers cm on cty.countryid=cm.country
+where cm.fullname='Volvo';
+
+
+#7.car models from 'ford motor company 
+select cm.maker,cm.fullname,md.model
+from continents cont
+inner join countries cty on cont.contid = cty.continent
+inner join car_makers cm on cty.countryid=cm.country
+right join model_details md on cm.maker=md.model    
+where cm.fullname='Ford Motor Company';
+
+
+#8.how many car models are made by germany?
+select cont.continent, cty.countryname, cm.maker, cm.fullname ,md.model   
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+where cty.countryname ='germany';
+
+
+#9.car models made by japan along with maker details
+
+select cont.continent, cty.countryname, cm.maker, cm.fullname ,md.model   
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+where cty.countryname ='japan';
+
+#10
+#a.mpg(hightest)
+select cont.continent,cty.countryname,md.model,cd.mpg
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.mpg desc;
+#(lowest)mpg
+select cont.continent,cty.countryname,md.model,cd.mpg
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.mpg asc;
+#cylinder(highest nd lowest)
+select cont.continent,cty.countryname,md.model,cd.cylinders
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.cylinders desc;
+select cont.continent,cty.countryname,md.model,cd.cylinders
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.cylinders asc;
+#edispl(highest nd lowest)
+select cont.continent,cty.countryname,md.model,cd.edispl
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.edispl desc;
+select cont.continent,cty.countryname,md.model,cd.edispl
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.edispl asc;
+#horsescope(highest nd lowest)
+select cont.continent,cty.countryname,md.model,cd.horsepower
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.horsepower desc;
+select cont.continent,cty.countryname,md.model,cd.horsepower
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.horsepower asc;
+#weight(highest nd lowest)
+select cont.continent,cty.countryname,md.model,cd.weight
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.weight desc;
+select cont.continent,cty.countryname,md.model,cd.weight
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.weight asc;
+#accel(highest nd lowest)
+select cont.continent,cty.countryname,md.model,cd.accel
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.accel desc;
+select cont.continent,cty.countryname,md.model,cd.accel
+from continents cont
+inner join countries cty on cont.contid=cty.continent
+inner join car_makers  cm on cty.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id   
+order by cd.accel asc;
+#11.in which year most cars were made?
+select count(distinct cn.model) as model_count, cd.year
+from car_names cn
+inner join car_details cd on cn.id = cd.id
+group by cd.year
+order by model_count desc
+fetch first 1 row only;
+
+#12.which year has less car made
+select count(distinct cn.model) as model_count, cd.year
+from car_names cn
+inner join car_details cd on cn.id = cd.id
+group by cd.year
+order by model_count asc
+fetch first 1 row only;
+
+#13.
+#a.mpg
+select max(cd.mpg),cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+select min(cd.mpg),cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+select avg(cd.mpg),cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+#b
+select cd.mpg,max(cd.cylinders),cd.edispl,cd.horsepower,cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+select cd.mpg,min(cd.cylinders),cd.edispl,cd.horsepower,cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+select cd.mpg,avg(cd.cylinders),cd.edispl,cd.horsepower,cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+#c.
+select cd.mpg,cd.cylinders,max(cd.edispl),cd.horsepower,cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+select cd.mpg,cd.cylinders,min(cd.edispl),cd.horsepower,cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+select cd.mpg,cd.cylinders,avg(cd.edispl),cd.horsepower,cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+#d
+select cd.mpg,cd.cylinders,cd.edispl,max(cd.horsepower),cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+select cd.mpg,cd.cylinders,cd.edispl,min(cd.horsepower),cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+select avg(cd.mpg),cd.cylinders,cd.edispl,avg(cd.horsepower),cd.weight,cd.accel
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+#e,f
+select cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,max(cd.weight),max(cd.accel)
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+select cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,min(cd.weight),min(cd.accel)
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+select cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,avg(cd.weight),avg(cd.accel)
+from car_names cn
+inner join car_details cd on cn.id=cd.id
+group by cd.mpg,cd.cylinders,cd.edispl,cd.horsepower,cd.weight,cd.accel;
+
