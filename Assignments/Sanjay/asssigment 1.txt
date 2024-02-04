@@ -1,0 +1,121 @@
+SELECT COUNT(*) AS total_employees
+FROM emp;
+----------------------------------------------------------------------------------------------
+SELECT COUNT(*) AS total_departments
+FROM dept;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM dept;
+----------------------------------------------------------------------------------------------
+SELECT SUM(sal) AS total_salary_paid
+FROM emp;
+----------------------------------------------------------------------------------------------
+SELECT SUM(comm) AS total_commission_paid
+FROM emp;
+----------------------------------------------------------------------------------------------
+SELECT DISTINCT job
+FROM emp
+WHERE comm IS NOT NULL;
+----------------------------------------------------------------------------------------------
+create table dual
+SELECT SYSDATE AS current_date
+FROM dual;
+----------------------------------------------------------------------------------------------
+SELECT AVG(sal) AS average_salary
+FROM emp;
+----------------------------------------------------------------------------------------------
+SELECT deptno, COUNT(*) AS num_employees
+FROM emp
+GROUP BY deptno;
+----------------------------------------------------------------------------------------------
+SELECT deptno, SUM(sal) AS total_salary
+FROM emp
+GROUP BY deptno;
+----------------------------------------------------------------------------------------------
+SELECT job, COUNT(*) AS num_employees
+FROM emp
+GROUP BY job;
+----------------------------------------------------------------------------------------------
+SELECT job, AVG(sal) AS average_salary
+FROM emp
+GROUP BY job;
+----------------------------------------------------------------------------------------------
+SELECT empno, TO_CHAR(hiredate, 'DD') AS hire_day,
+              TO_CHAR(hiredate, 'MM') AS hire_month,
+              TO_CHAR(hiredate, 'YYYY') AS hire_year
+FROM emp;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+ORDER BY deptno;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+ORDER BY job;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+ORDER BY sal DESC;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+ORDER BY deptno ASC, sal DESC;
+----------------------------------------------------------------------------------------------
+SELECT COUNT(*) AS num_employees
+FROM emp
+WHERE LENGTH(ename) = 6;
+----------------------------------------------------------------------------------------------
+SELECT MAX(sal) AS max_salary,
+       MIN(sal) AS min_salary
+FROM emp;
+----------------------------------------------------------------------------------------------
+SELECT deptno,
+       MAX(sal) AS max_salary,
+       MIN(sal) AS min_salary,
+       AVG(sal) AS avg_salary,
+       SUM(sal) AS total_salary
+FROM emp
+GROUP BY deptno;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+ORDER BY hiredate;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+ORDER BY hiredate DESC
+FETCH FIRST 1 ROW ONLY;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+ORDER BY hiredate
+FETCH FIRST 1 ROW ONLY;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+ORDER BY EXTRACT(YEAR FROM hiredate) DESC, deptno ASC;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+WHERE sal >= (SELECT AVG(sal) FROM emp);
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+WHERE sal <= (SELECT AVG(sal) FROM emp);
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+WHERE sal BETWEEN 2000 AND 4000;
+----------------------------------------------------------------------------------------------
+SELECT *
+FROM emp
+WHERE sal = (SELECT MAX(sal) FROM emp) OR sal = (SELECT MIN(sal) FROM emp);
+----------------------------------------------------------------------------------------------
+SELECT COUNT(*) AS num_employees
+FROM emp
+WHERE EXTRACT(MONTH FROM hiredate) = EXTRACT(MONTH FROM SYSDATE) + 1 AND EXTRACT(YEAR FROM hiredate) = EXTRACT(YEAR FROM SYSDATE);
+
+----------------------------------------------------------------------------------------------
