@@ -1,0 +1,259 @@
+Assignment 2
+Submitted by : Tafseer Kousar
+
+1.
+select cont.contid, cont.continent,cntry.countryid,cntry.countryname
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+order by cont.continent;
+
+2.
+select cont.continent, count(*) as NumberofCountries
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+group by cont.continent;
+
+3.
+select cntry.countryid,cntry.countryname,cm.maker
+from countries cntry
+left join car_makers cm on cntry.countryid=cm.country
+where cm.maker is null;
+
+4.
+select cntry.countryid,cntry.countryname,cm.maker,cm.fullname
+from countries cntry
+inner join car_makers cm on cntry.countryid=cm.country
+where cntry.countryname='japan';
+
+5.
+select cntry.countryid,cntry.countryname,cm.maker,cm.fullname
+from countries cntry
+inner join car_makers cm on cntry.countryid=cm.country
+where cntry.countryname IN ('france','usa');
+
+6.
+select cont.contid,cont.continent,cntry.countryid,cntry.countryname,cm.maker
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+where cm.maker='volvo';
+
+7.
+select cm.id, cm.maker,cm.fullname,cn.model,cn.descr
+from car_makers cm 
+inner join car_names cn on cm.maker=cn.model
+where cm.fullname='Ford Motor Company';
+
+8.
+select cntry.countryname,md.modelid,md.model
+from countries cntry
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+where cntry.countryname='germany';
+
+9.
+select cntry.countryname,cm.maker,cm.fullname,md.modelid,md.model
+from countries cntry
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+where cntry.countryname='japan';
+
+10.
+(a) 
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.mpg
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.mpg = (select max(mpg) from car_details);
+
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.mpg
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.mpg = (select min(mpg) from car_details);
+
+(b)
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.cylinders
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.cylinders = (select max(cylinders) from car_details);
+
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.cylinders
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.cylinders = (select min(cylinders) from car_details);
+
+(c)
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.edispl
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.edispl = (select max(edispl) from car_details);
+
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.edispl
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.edispl = (select min(edispl) from car_details);
+
+(d)
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.horsepower
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.horsepower = (select max(horsepower) from car_details);
+
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.horsepower
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.horsepower = (select min(horsepower) from car_details);
+
+(e)
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.weight
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.weight = (select max(weight) from car_details);
+
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.weight
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.weight = (select min(weight) from car_details);
+
+(f)
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.accel
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.accel = (select max(accel) from car_details);
+
+select cont.continent,cntry.countryname,cm.maker,cm.fullname,md.model,cn.descr,cd.accel
+from continents cont
+inner join countries cntry on cont.contid=cntry.continent
+inner join car_makers cm on cntry.countryid=cm.country
+inner join model_details md on cm.id=md.maker
+inner join car_names cn on md.model=cn.model
+inner join car_details cd on cn.id=cd.id
+where cd.accel = (select min(accel) from car_details);
+
+11.
+select cd.year , count(*)
+from car_details cd
+group by cd.year
+order by 2 desc
+fetch first 1 row only;
+
+12.
+select cd.year , count(*)
+from car_details cd
+group by cd.year
+order by 2 
+fetch first 1 row only;
+
+13.
+(a)
+select cd.year,max(cd.mpg),min(cd.mpg),avg(cd.mpg)
+from car_details cd
+group by cd.year;
+
+(b)
+select cd.year,max(cd.cylinders),min(cd.cylinders),avg(cd.cylinders)
+from car_details cd
+group by cd.year;
+
+(c)
+select cd.year,max(cd.edispl),min(cd.edispl),avg(cd.edispl)
+from car_details cd
+group by cd.year;
+
+(d)
+select cd.year,max(cd.horsepower),min(cd.horsepower),avg(cd.horsepower)
+from car_details cd
+group by cd.year;
+
+(e)
+select cd.year,max(cd.weight),min(cd.weight),avg(cd.weight)
+from car_details cd
+group by cd.year;
+
+(f)
+select cd.year,max(cd.acel),min(cd.acel),avg(cd.acel)
+from car_details cd
+group by cd.year;
+
+14.
+select avg(horsepower) as mean_horsepower,
+avg(weight) as mean_weight,
+avg(accel) as mean_accel,
+median(horsepower) as median_horsepower,
+median(weight) as medain_weight,
+median(accel) as median_accel,
+stddev(horsepower) as sd_horsepower,
+stddev(weight) as sd_weight,
+stddev(accel) as sd_accel
+from car_details;
+
+
+These measures convey the following information:
+
+1. *Mean (Average):*
+   - Mean Horsepower: Average power of all cars in the dataset.
+   - Mean Weight: Average weight of all cars in the dataset.
+   - Mean Acceleration: Average acceleration of all cars in the dataset.
+
+2. *Median:*
+   - Median Horsepower: Middle value of horsepower when all values are sorted.
+   - Median Weight: Middle value of weight when all values are sorted.
+   - Median Acceleration: Middle value of acceleration when all values are sorted.
+
+3. *Standard Deviation:*
+   - Standard Deviation of Horsepower: Indicates the amount of variation or dispersion in horsepower values.
+   - Standard Deviation of Weight: Indicates the amount of variation or dispersion in weight values.
+   - Standard Deviation of Acceleration: Indicates the amount of variation or dispersion in acceleration values.
+In summary, mean provides a measure of central tendency, median is robust to outliers, and standard deviation gives a sense of the data's spread or variability. It tell us how far the data values from the mean value. These statistics collectively offer insights into the distribution and characteristics of the car details dataset.
+
+15.
+CONTINENTS - CONTID(PK),(FK)
+COUNTRIES - COUNTRYID(PK) , CONTINENT(FK)
+CAR_MAKERS - ID(PK) , COUNTRY(FK)
+MODEL_DETAILS - MODEL_ID(PK) , MAKER(FK)
+CAR_NAMES - ID(PK) , MODEL(FK)
+CAR_DETAILS - ID(PK),(FK)
+
