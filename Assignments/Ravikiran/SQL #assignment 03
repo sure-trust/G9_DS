@@ -1,0 +1,158 @@
+1. select customer_id,First_name,Last_name,Address,amount_spent,rank
+from (
+    select dc.customer_id,
+        dc.cust_first_name as First_name,
+        dc.cust_last_name as Last_name,
+        dc.cust_street_address1 as Address,
+        sum(do.order_total) as amount_spent,
+        rank() over (order by sum(do.order_total) desc) as rank
+    from demo_customers dc
+    inner join demo_orders do on dc.customer_id = do.customer_id
+    group by dc.customer_id, dc.cust_first_name, dc.cust_last_name, dc.cust_street_address1
+)
+where 
+    rank <= 3;
+
+2.select *
+from (
+    select 
+        dc.customer_id,
+        dc.cust_first_name as First_name,
+        dc.cust_last_name as Last_name,
+        dc.cust_street_address1 as Address,
+        COUNT(do.order_id) as Total_order,
+        DENSE_RANK() OVER (order by COUNT(do.order_id) desc) as dense_rank
+    from 
+        demo_customers dc
+    inner join 
+        demo_orders do on dc.customer_id = do.customer_id
+    group by  
+        dc.customer_id, 
+        dc.cust_first_name, 
+        dc.cust_last_name, 
+        dc.cust_street_address1
+)
+where 
+    dense_rank <= 3
+order by
+    Total_order desc;
+
+
+3.select *
+from (
+    select 
+        dp.product_id,
+        dp.product_name,
+    	dp.product_description,
+    	dp.category,
+        sum(doi.quantity) as Total_quantity_sold,
+        rank() over (order by sum(doi.quantity) desc) as rank
+    from 
+        demo_products dp
+    inner join 
+        demo_order_items doi on dp.product_id = doi.product_id
+    group by 
+        dp.product_id, 
+        dp.product_name,
+    	dp.product_description,
+    	dp.category
+)
+where 
+    rank <= 3
+order by 
+    Total_quantity_sold desc;
+
+
+4.select 
+    dc.cust_last_name as Customer_Last_Name,
+    dp.product_name as Product_Name,
+    sum(doi.quantity) as Total_Quantity
+from 
+    demo_customers dc
+inner join demo_orders do on dc.customer_id = do.customer_id
+inner join demo_order_items doi on do.order_id = doi.order_id
+inner join demo_products dp on doi.product_id = dp.product_id
+group by dc.cust_last_name, dp.product_name
+order by product_name;
+
+
+5.select *
+from (
+    select 
+        dc.cust_last_name as Customer_Last_Name,
+        dp.product_name as Product_Name,
+        sum(doi.quantity) as Total_Quantity
+    from demo_customers dc
+    inner join demo_orders do on dc.customer_id = do.customer_id
+    inner join demo_order_items doi on do.order_id = doi.order_id
+    inner join demo_products dp on doi.product_id = dp.product_id
+    group by dc.cust_last_name, dp.product_name
+)
+PIVOT (
+    sum(Total_Quantity) 
+    for Product_Name in ('Bag', 'Belt', 'Blouse','Business Shirt','Jacket','Ladies Shoes','Mens Shoes','Skirt','Trousers','Wallet') 
+);
+
+
+6.select order_year,total_orders,most_order_year
+from (
+	select order_year, total_orders,
+	rank() over (order by total_orders desc) as most_order_year
+from (
+	select
+		to_char(do.order_timestamp, 'yyyy') as order_year,
+		count(*) as total_orders
+	from demo_orders do
+	group by to_char(do.order_timestamp, 'yyyy')
+	) ranked_years
+)
+where
+	most_order_year = 1;
+
+
+
+7.           demo_states        demo_customers          demo_orders            demo_products           demo_order_items 
+             st - pk            customer_id - pk        order_id - pk          product_id - pk         order_item_id - pk
+                                                        customer_id - fk                               order_id - fk
+
+ 
+
+
+8.select category, total_quantity_sold, Most_sold_rk_wise
+from (
+select dp.category,SUM(doi.quantity) as total_quantity_sold,
+    rank() over (order by sum(doi.quantity) desc) as Most_sold_rk_wise
+from demo_products dp
+inner join demo_order_items doi on dp.product_id = doi.product_id
+group by dp.category
+) ranked_categories
+where 
+    Most_sold_rk_wise  = 1;
+
+
+9. select  
+    category,
+    total_quantity_sold,
+    rank_category
+from (
+    select 
+        dp.category,
+        SUM(doi.quantity) as total_quantity_sold,
+        rank() over (order by SUM(doi.quantity) desc) as rank_category
+    from demo_products dp
+    inner join demo_order_items doi ON dp.product_id = doi.product_id
+    group by dp.category
+) ranked_categories
+where 
+    rank_category = 2;
+
+10.select dc.customer_id,
+    dc.cust_first_name || ' ' || dc.cust_last_name as customer_name,
+    dp.product_name,
+    SUM(doi.quantity) as total_quantity
+from demo_customers dc
+inner join demo_orders do on dc.customer_id = do.customer_id
+inner join demo_order_items doi on do.order_id = doi.order_id
+inner join demo_products dp on doi.product_id = dp.product_id
+group by rollup(dc.customer_id, dc.cust_first_name, dc.cust_last_name, dp.product_name)
+order by dc.customer_id, dp.product_name;
