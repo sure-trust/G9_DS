@@ -1,0 +1,24 @@
+DEMO_STATES                    DEMO_CUSTOMERS
++--------------+              +------------------+
+| STATE_ID (PK)|------------->| CUSTOMER_ID (PK) |
+| STATE_NAME   |              | FIRST_NAME       |
++--------------+              | LAST_NAME        |
+                              | EMAIL            |
+                              | PHONE            |
+                              | STATE_ID (FK)    |<----+
+                              +------------------+     |
+                                                         |
+                              DEMO_ORDERS              |
+                              +--------------+         |
+                              | ORDER_ID (PK)|<--------+
+                              | ORDER_DATE   |
+                              | CUSTOMER_ID (FK)|
+                              +--------------+
+
+DEMO_PRODUCTS                 DEMO_ORDER_ITEMS
++--------------+              +------------------+
+| PRODUCT_ID (PK)|------------>| ORDER_ITEM_ID (PK)|
+| PRODUCT_NAME  |              | ORDER_ID (FK)    |
+| UNIT_PRICE    |------------->| PRODUCT_ID (FK)  |
+| CATEGORY_ID (FK)|           | QUANTITY         |
++--------------+              +------------------+
