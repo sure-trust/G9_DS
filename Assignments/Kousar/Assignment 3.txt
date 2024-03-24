@@ -1,0 +1,201 @@
+Assignment 3
+
+select*from demo_states;
+select*from demo_customers;
+select*from demo_orders;
+select*from demo_products;
+select*from demo_order_items;
+
+1. Top 3 customers based on amount spend
+
+select c.customer_id,c.cust_first_name,c.cust_last_name,o.order_total
+from demo_customers c
+inner join demo_orders o on c.customer_id=o.customer_id
+order by 4 desc
+fetch first 3 rows only;
+
+select*from (
+select o.customer_id,o.order_total,
+dense_rank() over(order by order_total desc ) as dnse_rnk
+from demo_orders o
+)
+where dnse_rnk<=3;
+
+------
+select*from(
+select c.customer_id,c.cust_first_name,c.cust_last_name,o.order_total,
+dense_rank() over(order by o.order_total desc ) as dnse_rnk
+from demo_customers c
+inner join demo_orders o on c.customer_id=o.customer_id
+) 
+where dnse_rnk<=3;
+-------
+
+2.
+select*from (
+select oi.order_id,oi.quantity,
+dense_rank() over(order by quantity desc ) as dnse_rnk
+from demo_order_items oi
+)
+where dnse_rnk<=3;
+
+
+select*from (
+select o.customer_id,oi.order_id,oi.quantity,
+dense_rank() over(order by quantity desc ) as dnse_rnk
+from demo_order_items oi
+inner join demo_orders o on o.order_id=oi.order_id
+)
+where dnse_rnk<=3;
+
+--------
+select*from (
+select c.cust_first_name,c.cust_last_name,o.customer_id,oi.order_id,oi.quantity,
+dense_rank() over(order by quantity desc ) as dnse_rnk
+from demo_order_items oi
+inner join demo_orders o on o.order_id=oi.order_id
+inner join demo_customers c on c.customer_id=o.customer_id
+)
+where dnse_rnk<=3;
+------
+
+3.
+----
+select*from (
+select p.product_id,p.product_name,p.product_description,oi.quantity,
+dense_rank() over(order by quantity desc ) as dnse_rnk
+from demo_products p
+inner join demo_order_items oi on p.product_id=oi.product_id
+)
+where dnse_rnk<=3;
+-----
+
+4. 
+----
+select c.cust_last_name,p.product_name,sum(oi.quantity) as total_quantity
+from demo_customers c
+inner join demo_orders o on c.customer_id=o.customer_id
+inner join demo_order_items oi on o.order_id=oi.order_id
+inner join demo_products p on oi.product_id=p.product_id
+group by c.cust_last_name,p.product_name
+order by 1,2,3;
+----
+
+5.
+SELECT *
+FROM (
+    SELECT
+        c.cust_last_name,
+        p.product_name,
+        sum(oi.quantity) as total_quantity
+    FROM
+        demo_customers c
+    INNER JOIN
+        demo_orders o ON c.customer_id = o.customer_id
+    INNER JOIN
+        demo_order_items oi ON o.order_id = oi.order_id
+    INNER JOIN
+        demo_products p ON oi.product_id = p.product_id
+    GROUP BY
+        c.cust_last_name, p.product_name
+) 
+PIVOT (
+    MAX(total_quantity) FOR product_name IN (
+        'Business Shirt' AS Business_Shirt,
+        'Trousers' AS Trousers,
+        'Jacket' AS Jacket,
+        'Blouse' AS Blouse,
+        'Shirt' AS Shirt,
+        'Ladies Shoes' AS Ladies_Shoes,
+        'Belt' AS Belt,
+        'Bag' AS Bag,
+        'Mens Shoes' AS Mens_Shoes,
+        'Wallet' AS Wallet
+    )
+) 
+order by 1;
+
+----
+select *
+from (
+    select
+        c.cust_last_name,
+        p.product_name,
+        sum(oi.quantity) as total_quantity
+    from
+        demo_customers c
+    inner join
+        demo_orders o on c.customer_id = o.customer_id
+    inner join
+        demo_order_items oi on o.order_id = oi.order_id
+    inner join
+        demo_products p on oi.product_id = p.product_id
+    group by
+        c.cust_last_name, p.product_name
+) 
+pivot (
+    max(total_quantity) for product_name in (
+        'Business Shirt' as Business_Shirt,
+        'Trousers' as Trousers,
+        'Jacket' as Jacket,
+        'Blouse' as Blouse,
+        'Shirt' as Shirt,
+        'Ladies Shoes' as Ladies_Shoes,
+        'Belt' as Belt,
+        'Bag' as Bag,
+        'Mens Shoes' as Mens_Shoes,
+        'Wallet' as Wallet
+    )
+) 
+order by 1;
+-----
+
+6.
+select to_char(o.order_timestamp,'yyyy') as year
+from demo_orders o
+order by 1;
+
+-----
+select to_char(o.order_timestamp,'yyyy') as year, count(*) as total_orders
+from demo_orders o
+group by to_char(o.order_timestamp,'yyyy')
+order by 1 desc
+fetch first 1 row only;
+-----
+
+7.
+demo_states : ST - PK
+demo_customers : CUSTOMER_ID - PK,FK
+demo_orders : ORDER_ID - PK,FK
+demo_products : PRODUCT_ID - PK,FK
+demo_order_items : ORDER_ITEM_ID - PK
+
+
+
+8. 
+select*from (
+select p.product_id,p.product_name,p.product_description,oi.quantity,
+dense_rank() over(order by quantity desc ) as dnse_rnk
+from demo_products p
+inner join demo_order_items oi on p.product_id=oi.product_id
+)
+where dnse_rnk=1;
+
+9.
+select*from (
+select p.product_id,p.product_name,p.product_description,oi.quantity,
+dense_rank() over(order by quantity desc ) as dnse_rnk
+from demo_products p
+inner join demo_order_items oi on p.product_id=oi.product_id
+)
+where dnse_rnk=2;
+
+10. roll up total quantity on customer and product name
+
+select c.cust_first_name,p.product_name,sum(oi.quantity) as total_quantity
+from demo_customers c
+inner join demo_orders o on c.customer_id=o.customer_id
+inner join demo_order_items oi on o.order_id=oi.order_id
+inner join demo_products p on oi.product_id=p.product_id
+group by rollup(c.cust_first_name,p.product_name)
+order by 1,2,3;
