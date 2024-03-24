@@ -1,0 +1,527 @@
+[
+    {
+        "topic": "Science",
+        "questions": [
+            {
+                "text": "What is the chemical symbol for water?",
+                "choices": [
+                    "H2O",
+                    "CO2",
+                    "NaCl",
+                    "O2"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "What is the largest organ in the human body?",
+                "choices": [
+                    "Heart",
+                    "Brain",
+                    "Skin",
+                    "Liver"
+                ],
+                "correct_choice": 2
+            },
+            {
+                "text": "What is the force that causes objects to fall to the ground called?",
+                "choices": [
+                    "Friction",
+                    "Gravity",
+                    "Magnetism",
+                    "Acceleration"
+                ],
+                "correct_choice": 1
+            },
+            {
+                "text": "What is DNA stands for?",
+                "choices": [
+                    "Deoxyribonucleic acid",
+                    "Deribonucleic acid",
+                    "Deoxynucleic acid",
+                    "None of these"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "How many bones are in the human body?",
+                "choices": [
+                    "202",
+                    "205",
+                    "206",
+                    "209"
+                ],
+                "correct_choice": 2
+            },
+            {
+                "text": "The concept of gravity was discovered by which famous physicist?",
+                "choices": [
+                    "Stefan Hawkyn",
+                    "Albert Einstein",
+                    "Galileo Galilei",
+                    "Isaac Newton"
+                ],
+                "correct_choice": 3
+            },
+            {
+                "text": "What is the hardest natural substance on Earth?",
+                "choices": [
+                    "Diamond",
+                    "Graphite",
+                    "Iron",
+                    "Quartz"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "Which is the main gas that makes up the Earth's atmosphere?",
+                "choices": [
+                    "Oxygen",
+                    "Nitrogen",
+                    "Carbon dioxide",
+                    "Argon"
+                ],
+                "correct_choice": 1
+            },
+            {
+                "text": "Humans and chimpanzees share roughly how much DNA?",
+                "choices": [
+                    "50%",
+                    "70%",
+                    "90%",
+                    "98%"
+                ],
+                "correct_choice": 3
+            },
+            {
+                "text": "What is the most abundant gas in the Earth's atmosphere?",
+                "choices": [
+                    "Oxygen",
+                    "Nitrogen",
+                    "Carbon dioxide",
+                    "Argon"
+                ],
+                "correct_choice": 1
+            }
+        ]
+    },
+    {
+        "topic": "Maths",
+        "questions": [
+            {
+                "text": "What is the result of 2 + 2?",
+                "choices": [
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ],
+                "correct_choice": 2
+            },
+            {
+                "text": "What is the value of pi (\u03c0)?",
+                "choices": [
+                    "3.14",
+                    "2.71",
+                    "1.618",
+                    "4.20"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "What is the square root of 16?",
+                "choices": [
+                    "2",
+                    "4",
+                    "6",
+                    "8"
+                ],
+                "correct_choice": 1
+            },
+            {
+                "text": "121 Divided by 11 is",
+                "choices": [
+                    "11",
+                    "10",
+                    "19",
+                    "18"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "60 Times of 8 Equals to",
+                "choices": [
+                    "480",
+                    "300",
+                    "250",
+                    "400"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "Find the Missing Term in Multiples of 6: 6, 12, 18, 24, _, 36, 42, _, 54, 60",
+                "choices": [
+                    "32, 45",
+                    "30, 48",
+                    "24, 40",
+                    "25, 49"
+                ],
+                "correct_choice": 1
+            },
+            {
+                "text": "What is the Next Prime Number after 7?",
+                "choices": [
+                    "13",
+                    "12",
+                    "14",
+                    "11"
+                ],
+                "correct_choice": 3
+            },
+            {
+                "text": "The Product of 131 \u00d7 0 \u00d7 300 \u00d7 4",
+                "choices": [
+                    "11",
+                    "0",
+                    "46",
+                    "45"
+                ],
+                "correct_choice": 1
+            },
+            {
+                "text": "Solve 3 + 6 \u00d7 (5 + 4) \u00f7 3 - 7",
+                "choices": [
+                    "11",
+                    "16",
+                    "14",
+                    "15"
+                ],
+                "correct_choice": 2
+            },
+            {
+                "text": "Solve 23 + 3 \u00f7 3",
+                "choices": [
+                    "24",
+                    "25",
+                    "26",
+                    "27"
+                ],
+                "correct_choice": 0
+            }
+        ]
+    },
+    {
+        "topic": "General Knowledge",
+        "questions": [
+            {
+                "text": "What is the capital of Australia?",
+                "choices": [
+                    "Sydney",
+                    "Melbourne",
+                    "Canberra",
+                    "Perth"
+                ],
+                "correct_choice": 2
+            },
+            {
+                "text": "Who wrote 'To Kill a Mockingbird'?",
+                "choices": [
+                    "J.K. Rowling",
+                    "Harper Lee",
+                    "Stephen King",
+                    "George Orwell"
+                ],
+                "correct_choice": 1
+            },
+            {
+                "text": "What is the largest mammal in the world?",
+                "choices": [
+                    "Elephant",
+                    "Blue Whale",
+                    "Giraffe",
+                    "Hippopotamus"
+                ],
+                "correct_choice": 1
+            },
+            {
+                "text": "The Battle of Plassey was fought in",
+                "choices": [
+                    "1757",
+                    "1782",
+                    "1748",
+                    "1764"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "The territory of Porus who offered strong resistance to Alexander was situated between the rivers of",
+                "choices": [
+                    "Sutlej and Beas",
+                    "Jhelum and Chenab",
+                    "Ravi and Chenab",
+                    "Ganga and Yamuna"
+                ],
+                "correct_choice": 1
+            },
+            {
+                "text": "Under Akbar, the Mir Bakshi was required to look after",
+                "choices": [
+                    "military affairs",
+                    "the state treasury",
+                    "the royal household",
+                    "the land revenue system"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "Tripitakas are sacred books of",
+                "choices": [
+                    "Buddhists",
+                    "Hindus",
+                    "Jains",
+                    "None of the above"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "The trident-shaped symbol of Buddhism does not represent",
+                "choices": [
+                    "Nirvana",
+                    "Sangha",
+                    "Buddha",
+                    "Dhamma"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "The theory of economic drain of India during British imperialism was propounded by",
+                "choices": [
+                    "Jawaharlal Nehru",
+                    "Dadabhai Naoroji",
+                    "R.C. Dutt",
+                    "M.K. Gandhi"
+                ],
+                "correct_choice": 1
+            },
+            {
+                "text": "The treaty of Srirangapatna was signed between Tipu Sultan and",
+                "choices": [
+                    "Robert Clive",
+                    "Cornwallis",
+                    "Dalhousie",
+                    "Warren Hastings"
+                ],
+                "correct_choice": 1
+            }
+        ]
+    },
+    {
+        "topic": "Sports",
+        "questions": [
+            {
+                "text": "Who captained India to its first-ever Cricket World Cup victory in 1983?",
+                "choices": [
+                    "Kapil Dev",
+                    "Sunil Gavaskar",
+                    "Sachin Tendulkar",
+                    "Sourav Ganguly"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "Which Indian badminton player became the first Indian to win an Olympic medal in the sport?",
+                "choices": [
+                    "Kidambi Srikanth",
+                    "PV Sindhu",
+                    "Saina Nehwal",
+                    "Prakash Padukone"
+                ],
+                "correct_choice": 2
+            },
+            {
+                "text": "Which city hosted the iconic 2011 Cricket World Cup final between India and Sri Lanka?",
+                "choices": [
+                    "Mumbai",
+                    "Kolkata",
+                    "Chennai",
+                    "Delhi"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "Who was the first Indian cricketer to score a double century in ODI?",
+                "choices": [
+                    "Sunil Gavaskar",
+                    "Sachin Tendulkar",
+                    "Virender Sehwag",
+                    "Kapil Dev"
+                ],
+                "correct_choice": 1
+            },
+            {
+                "text": "Who is the only Indian male boxer to win a medal at the Olympics?",
+                "choices": [
+                    "Manoj Kumar",
+                    "Mary Kom",
+                    "Vikas Krishan Yadav",
+                    "Vijender Singh"
+                ],
+                "correct_choice": 3
+            },
+            {
+                "text": "Which Indian chess player holds the prestigious title of Grandmaster?",
+                "choices": [
+                    "Viswanathan Anand",
+                    "Harikrishna Koneru",
+                    "Pentala Harikrishna",
+                    "Adhiban Baskaran"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "Which Indian paralympic athlete won the gold medal in men's discus throw F64 at the Tokyo Paralympics 2020?",
+                "choices": [
+                    "Mariyappan Thangavelu",
+                    "Singhraj Adhana",
+                    "Sumit Antil",
+                    "Devendra Jhajharia"
+                ],
+                "correct_choice": 2
+            },
+            {
+                "text": "Who is the current president of the Board of Control for Cricket in India (BCCI)?",
+                "choices": [
+                    "Sourav Ganguly",
+                    "Roger Binny",
+                    "Rahul Dravid",
+                    "Jay Shah"
+                ],
+                "correct_choice": 1
+            },
+            {
+                "text": "Which Indian athlete is known as the 'Flying Sikh' for his exceptional speed in athletics?",
+                "choices": [
+                    "PT Usha",
+                    "Manoj Tiwari",
+                    "Neeraj Chopra",
+                    "Milkha Singh"
+                ],
+                "correct_choice": 3
+            },
+            {
+                "text": "Who is the youngest Indian woman to climb Mount Everest?",
+                "choices": [
+                    "Arunima Sinha",
+                    "Malavath Poorna",
+                    "Santosh Yadav",
+                    "Bachendri Pal"
+                ],
+                "correct_choice": 1
+            }
+        ]
+    },
+    {
+        "topic": "Anime",
+        "questions": [
+            {
+                "text": "Who is the father of Naruto?",
+                "choices": [
+                    "Minato Namikaze",
+                    "Kakashi Hatake",
+                    "Jiraiya",
+                    "Itachi Uchiha"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "Who is the villain that destroys hidden leaf village?",
+                "choices": [
+                    "Madara Uchiha",
+                    "Orochimaru",
+                    "Pain (Nagato)",
+                    "Obito Uchiha"
+                ],
+                "correct_choice": 2
+            },
+            {
+                "text": "Who is determined to be the king of pirates?",
+                "choices": [
+                    "Zoro",
+                    "Sanji",
+                    "Nami",
+                    "Monkey D. Luffy"
+                ],
+                "correct_choice": 3
+            },
+            {
+                "text": "Who is the right hand man of Monkey D. Luffy?",
+                "choices": [
+                    "Roronoa Zoro",
+                    "Sanji",
+                    "Nami",
+                    "Usopp"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "Who is the navigator of the straw hats crew?",
+                "choices": [
+                    "Zoro",
+                    "Sanji",
+                    "Nami",
+                    "Usopp"
+                ],
+                "correct_choice": 2
+            },
+            {
+                "text": "Who is the nine-tail jinchuriki?",
+                "choices": [
+                    "Naruto Uzumaki",
+                    "Sasuke Uchiha",
+                    "Minato Namikaze",
+                    "Killer Bee"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "Who is called as the King of beasts?",
+                "choices": [
+                    "Gol D. Roger",
+                    "Whitebeard",
+                    "Kaido",
+                    "Shanks"
+                ],
+                "correct_choice": 2
+            },
+            {
+                "text": "Where is the king of pirates died?",
+                "choices": [
+                    "Loguetown",
+                    "Marineford",
+                    "Water 7",
+                    "Sabaody Archipelago"
+                ],
+                "correct_choice": 0
+            },
+            {
+                "text": "Who commits genocide in Attack on Titan?",
+                "choices": [
+                    "Levi Ackerman",
+                    "Mikasa Ackerman",
+                    "Eren Yeager",
+                    "Erwin Smith"
+                ],
+                "correct_choice": 2
+            },
+            {
+                "text": "Who is called as trash of animeverse?",
+                "choices": [
+                    "Sakura Haruno",
+                    "Sasuke Uchiha",
+                    "Danzo Shimura",
+                    "Ten Ten"
+                ],
+                "correct_choice": 0
+            }
+        ]
+    }
+]
